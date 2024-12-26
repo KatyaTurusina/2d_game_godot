@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://jqnvo6w3mqgv"]
+
+[ext_resource type="PackedScene" uid="uid://c5rj1mkbprg72" path="res://player.tscn" id="1_4dodc"]
+[ext_resource type="Script" path="res://player.gd" id="2_ojb0a"]
+[ext_resource type="PackedScene" uid="uid://euib4msu604t" path="res://tile_map_layer.tscn" id="3_53hdg"]
+[ext_resource type="Script" path="res://ui.gd" id="5_cl28n"]
+[ext_resource type="Texture2D" uid="uid://bxv7jwledogqm" path="res://Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png" id="5_hoyuv"]
+[ext_resource type="PackedScene" uid="uid://clerj6mg0mrlq" path="res://egg.tscn" id="5_lw4je"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("3_53hdg")]
+position = Vector2(22, 23)
+
+[node name="Player" parent="." instance=ExtResource("1_4dodc")]
+position = Vector2(185, 135)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_ojb0a")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-326, -224)
+scale = Vector2(2, 2)
+offset = Vector2(10, 40)
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1300
+limit_bottom = 800
+
+[node name="EggsLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="egg" parent="EggsLayer" instance=ExtResource("5_lw4je")]
+position = Vector2(307, 568)
+scale = Vector2(0.691362, 0.81161)
+
+[node name="egg2" parent="EggsLayer" instance=ExtResource("5_lw4je")]
+position = Vector2(246, 562)
+scale = Vector2(0.691362, 0.81161)
+
+[node name="egg3" parent="EggsLayer" instance=ExtResource("5_lw4je")]
+position = Vector2(271, 599)
+scale = Vector2(0.691362, 0.81161)
+
+[node name="egg4" parent="EggsLayer" instance=ExtResource("5_lw4je")]
+position = Vector2(348, 548)
+scale = Vector2(0.691362, 0.81161)
+
+[node name="egg5" parent="EggsLayer" instance=ExtResource("5_lw4je")]
+position = Vector2(222, 524)
+scale = Vector2(0.691362, 0.81161)
+
+[node name="egg6" parent="EggsLayer" instance=ExtResource("5_lw4je")]
+position = Vector2(170, 546)
+scale = Vector2(0.691362, 0.81161)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_cl28n")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 14.0
+offset_right = -21.0
+offset_bottom = 71.0
+grow_horizontal = 0
+texture = ExtResource("5_hoyuv")
+
+[node name="egg_count" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 16.0
+offset_right = -74.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 38
+text = "0"
+tab_size = 5
